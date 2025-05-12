@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "msh_signals.h": "c",
+        "history.h": "c",
+        "stdlib.h": "c",
+        "unistd.h": "c"
+    }
+}

@@ -1,0 +1,44 @@
+                            >>>>>>>>>>>>>COMPILATION<<<<<<<<<<<<<<<<<<<<
+cc main.c pwd.c ../signals/signal.c  ../../libs/mac/*.a ../../libft/libft.a -lcurses -o minishell
+
+
+ Builtins in a Shell?
+In a Unix shell like Bash or Zsh, there are two types of commands:
+
+1. External Commands
+These are programs stored in files (like /bin/ls, /usr/bin/cat)
+
+The shell runs them using fork() + execve()
+
+Example: ls, cat, ping, vim
+
+2. Builtin Commands (Builtins)
+These are implemented inside the shell itself, not external programs
+
+Executed directly by your shell’s process
+
+Required because they must change the shell's internal state
+
+❗Why Builtins Are Special
+Some commands must run inside the current shell process to work properly.
+
+For example:
+cd /home/user
+
+If cd were executed as a separate process:
+
+* The child would change its own working directory
+* When the child exits, your shell would still be in the same directory as before
+
+That’s why cd is a builtin.
+
+✅ Builtin Commands We Must Handle in Minishell
+According to the subjet:
+
+◦ echo with option -n : Print arguments to the terminal
+◦ cd with only a relative or absolute path : Change the current directory
+◦ pwd with no options : Print current working directory
+◦ export with no options : Set environment variables
+◦ unset with no options : Remove environment variables
+◦ env with no options or arguments : Print the environment variables
+◦ exit with no options : Exit the shell program
